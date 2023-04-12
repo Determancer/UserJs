@@ -1899,6 +1899,17 @@ function newRound() { // New Round
   });
 }
 
+function battleInfoType(type) { // 增加战役类型说明
+    switch (type) {
+        case 'ar': return 'Arena';
+        case 'ba': return 'Random Encounter';
+        case 'rb': return 'Ring of Blood';
+        case 'tw': return 'The Tower';
+        case 'iw': return 'Item World';
+        case 'gf': return 'GrindFest';
+    }
+}
+
 function battleInfo() { // 战斗战况
   if (!gE('.hvAALog')) {
     const div = gE('#hvAABox2').appendChild(cE('div'));
@@ -1919,6 +1930,7 @@ function battleInfo() { // 战斗战况
     `<br>Round: ${g('roundNow')}/${g('roundAll')}`,
     `<br><l0>攻击模式</l0><l1>攻擊模式</l1><l2>Attack Mode</l2>: ${status[g('attackStatus')]}`,
     `<br><l0>敌人</l0><l1>敌人</l1><l2>Monsters</l2>: ${g('monsterAlive')}/${g('monsterAll')}`,
+    `<br><l0>战役类型</l0><l1>戰役類型</l1><l2>Type</l2>: ${battleInfoType(g('roundType'))}`, // 增加战役类型说明
   ].join('');
   document.title = `${g('turn')}||${g('runSpeed')}||${g('roundNow')}/${g('roundAll')}||${g('monsterAlive')}/${g('monsterAll')}`;
 }
